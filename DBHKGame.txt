@@ -1,0 +1,27 @@
+create database HKGame
+use HKGame
+create table Players(
+PlayerId int AUTO_INCREMENT not null primary key,
+PlayerName nvarchar(100),
+PlayerUsername nvarchar(100),
+PlayerPassword nvarchar(100)
+);
+alter table Players
+add PlayerEmail nvarchar(100)
+create table UserPoint(
+PointId int AUTO_INCREMENT not null primary key,
+PointValue int,
+PlayerId int,
+constraint FK_UserPoint_Player foreign key(PlayerId)
+references Players(PlayerId)
+)
+ALTER TABLE players AUTO_INCREMENT = 2;
+
+
+use HKGame
+select * from players a inner join userpoint b on a.playerId = b.playerId 
+ORDER BY b.pointValue DESC;
+select * from userpoint
+Select * from Players where PlayerUsername = 'khai10109' and PlayerPassword = 'khai@123'
+Select a.PlayerId,a.PlayerName,a.PlayerUsername,a.PlayerEmail,b.pointValue from players a inner join userpoint b on a.playerId = b.playerId order by b.pointValue desc
+select * from players where PlayerUsername like 'khai1' and PlayerPassword like '123'
